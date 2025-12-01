@@ -28,7 +28,7 @@ const Signup = () => {
     axios.post('http://localhost:8020/user/signup', formData)
       .then(res => {
         setLoading(false);
-        toast.success('Signup Successfully');
+        toast.success('Signup Successfully create');
         navigate('/login');
         console.log(res);
       })
