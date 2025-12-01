@@ -1,0 +1,12 @@
+*{
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+   border: none;
+    outline: none;
+}
+body{
+  margin: 0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osk-font-smoothing:grayscale;
+  color: #33394c;
+}
