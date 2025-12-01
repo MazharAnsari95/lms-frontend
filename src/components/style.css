@@ -65,7 +65,45 @@ width: 80%;
 border-radius: 10px;
 height: 45px;
 font-size: 15px;
+cursor: pointer;
 }
 .your-logo{
     height: 100px;
+}
+.link{
+    color: #7033FF;
+    text-decoration: none;
+    margin-top: 20px;
+}
+/*---------------------dashboard------------------*/
+.dashboard-main-container{
+    height: 100vh;
+    width: 100%;
+    background:linear-gradient(to right,#cab3ff,rgb(219, 219, 223));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+
+}
+.dashboard-container{
+    width: 95%;
+    height: 95vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+
+}
+.nav-container{
+    width: 20%;
+    height: 95vh;
+    background-color: #7033FF;
+}
+.main-container{
+     width: 80%;
+    height: 95vh;
+    background-color: white;
 }

@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const myRouter = createBrowserRouter([
-    {path:'',Component:Signup},
+    {path:'',Component:Login},
     { path: 'login', Component: Login },
     { path: 'signup', Component: Signup },
     { path: 'dashboard', Component: Dashboard }

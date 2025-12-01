@@ -4,6 +4,7 @@ import logo from '../assets/logoo.png';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 
@@ -63,6 +64,7 @@ const Signup = () => {
             <input required onChange={fileHandler} type='file' />
             {imageUrl && <img className='your-logo' alt='Your logo' src={imageUrl} />}
             <button type='submit'>{ isLoading && <i class="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
+            <Link className='link' to='/login'>Login with Your Account</Link>
           </form>
 
         </div>
