@@ -1,10 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import React from 'react'
 import '../components/style.css'
 import logo from '../assets/logoo.png';
 import SideNav from './SideNav';
-import { Outlet } from 'react-router-dom';
+import { Outlet} from 'react-router-dom';
 
 const Dashboard = () => {
+   const navigate=useNavigate();
+  const logoutHandler=()=>{
+    localStorage.clear();
+    navigate('/login');
+
+  }
   return (
     <div className='dashboard-main-container'>
       <div className='dashboard-container'>
@@ -13,16 +20,18 @@ const Dashboard = () => {
           <div className='top-bar'>
 
             <div className='logo-container'>
-           <img  className='profile-logo' src={logo} alt="profile logo" />
+           <img  className='profile-logo' src={localStorage.getItem('imageUrl')} alt="profile logo" />
             </div>
             <div className='profile-container'>
-              <h2 className='profile-name'>AIMT College</h2>
-              <button className='logout-btn'>Logout</button>
+              <h2 className='profile-name'>{localStorage.getItem('fullName')}</h2>
+              <button className='logout-btn' onClick={logoutHandler}>Logout</button>
             </div>
           </div>
 
 
-          <Outlet/>
+         <div className='outlet-area'>
+           <Outlet/>
+         </div>
         </div>
 
       </div>

@@ -22,11 +22,19 @@ const Login = () => {
       email: email,
       password: password
     })
+
       .then(res => {
         setLoading(false);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('fullName', res.data.fullName);
+        localStorage.setItem('imageUrl', res.data.imageUrl);
+        localStorage.setItem('imageId', res.data.imageId);
+        localStorage.setItem('email', res.data.email);
         navigate('/dashboard');
-        console.log(res);
+        console.log(res.data); // check sab fields
       })
+
+
       .catch(err => {
         setLoading(false);
         toast.error('something is wrong')
@@ -46,11 +54,11 @@ const Login = () => {
 
 
         <div className='signup-right'>
-          <form onSubmit={submitHandler} className='signup-form'>
+          <form onSubmit={submitHandler} className='form'>
             <h1>Login with Your Account</h1>
             <input required type='email' onChange={e => { setEmail(e.target.value) }} placeholder='Email' />
             <input required type='password' onChange={e => { setPassword(e.target.value) }} placeholder='Password' />
-            <button type='submit'>{isLoading && <i class="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
+            <button type='submit'>{isLoading && <i className="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
             <Link className='link' to='/signup'>Create Your Account</Link>
           </form>
 

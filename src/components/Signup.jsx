@@ -55,7 +55,7 @@ const Signup = () => {
 
 
         <div className='signup-right'>
-          <form onSubmit={submitHandler} className='signup-form'>
+          <form onSubmit={submitHandler} className='form'>
             <h1>Create Your Account</h1>
             <input required type='text' onChange={e => { setFullName(e.target.value) }} placeholder='Institute  Full Name' />
             <input required type='email' onChange={e => { setEmail(e.target.value) }} placeholder='Email' />
@@ -63,7 +63,7 @@ const Signup = () => {
             <input required type='password' onChange={e => { setPassword(e.target.value) }} placeholder='Password' />
             <input required onChange={fileHandler} type='file' />
             {imageUrl && <img className='your-logo' alt='Your logo' src={imageUrl} />}
-            <button type='submit'>{ isLoading && <i class="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
+            <button type='submit'>{ isLoading && <i className="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
             <Link className='link' to='/login'>Login with Your Account</Link>
           </form>
 
