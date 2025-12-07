@@ -1,3 +1,4 @@
+
 /* .......signup and login....*/
 .signup-wrapper {
     width: 100%;
@@ -10,7 +11,10 @@
 
 .signup-box {
     width: 80%;
-    height: 80vh;
+    height: auto;
+    /* FIX */
+    min-height: 80vh;
+    /* FIX */
     background-color: white;
     border-radius: 10px;
     display: flex;
@@ -30,46 +34,37 @@
 .signup-left-heading {
     color: white;
     font-size: 28px;
-
 }
 
 .signup-left-para {
     color: yellow;
     font-size: 15px;
-
 }
 
 .signup-right {
     width: 50%;
     padding: 10px;
+    height: 100%;
+    /* FIX */
 }
 
 .form {
-    height: 80vh;
+    height: auto;
+    /* FIX */
+    min-height: 80vh;
+    /* FIX */
     display: flex;
     flex-direction: column;
     gap: 10px;
-    /* justify-content: center; */
     justify-content: flex-start;
     align-items: center;
 }
 
-.form input {
+.form input,
+select {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #a5a5a5;
-    border-radius: 10px;
-    width: 80%;
-    font-size: 15px;
-    height: 45px;
-
-}
-select{
-     padding: 10px;
-
-    border-radius: 10px;
-    border: 1px solid #a5a5a5;
-    border-radius: 10px;
     width: 80%;
     font-size: 15px;
     height: 45px;
@@ -97,6 +92,7 @@ select{
 }
 
 /*---------------------dashboard------------------*/
+
 .dashboard-main-container {
     height: 100vh;
     width: 100%;
@@ -104,33 +100,34 @@ select{
     display: flex;
     justify-content: center;
     align-items: center;
-
-
-
 }
 
 .dashboard-container {
     width: 95%;
-    height: 95vh;
+    height: 100%;
+    /* FIX */
     background-color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     overflow: hidden;
-
 }
 
 .nav-container {
     width: 20%;
-    height: 95vh;
+    height: 100%;
+    /* FIX */
     background-color: #7033FF;
     padding: 10px;
 }
 
 .main-container {
     width: 80%;
-    height: 95vh;
+    height: 100%;
+    /* FIX */
     background-color: white;
+    overflow-y: auto;
+    /* FIX */
 }
 
 .top-bar {
@@ -143,8 +140,6 @@ select{
     justify-content: flex-end;
     padding: 10px;
     gap: 20px;
-
-
 }
 
 .logo-container {
@@ -153,26 +148,21 @@ select{
     background-color: white;
     border-radius: 50%;
     overflow: hidden;
-
 }
 
 .profile-logo {
     width: 50px;
     height: 50px;
-
 }
 
 .profile-container {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    /* background-color: green; */
-
 }
 
 .profile-name {
     font-size: 18px;
-
 }
 
 .logout-btn {
@@ -186,11 +176,9 @@ select{
 
 .brand-container {
     height: 100px;
-    /* background-color: red; */
     display: flex;
     align-items: center;
     gap: 8px;
-
 }
 
 .brand-name {
@@ -209,47 +197,35 @@ select{
 .menu-container {
     display: flex;
     flex-direction: column;
-    /* gap: 15px; */
 }
 
-.menu-link {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    padding: 15px;
-    /* background-color: red; */
-    width: 90%;
-    border-radius: 5px;
-
-}
-
+.menu-link,
 .menu-active-link {
     color: white;
     text-decoration: none;
     font-size: 15px;
     padding: 15px;
-    background-color: rgba(26, 8, 63, 0.5);
     width: 90%;
     border-radius: 5px;
+}
+
+.menu-active-link {
+    background-color: rgba(26, 8, 63, 0.5);
 }
 
 .menu-link:hover {
     background-color: rgba(26, 8, 63, 0.5);
     transition: 0.5s;
-
 }
 
 .fa-solid {
     margin-right: 10px !important;
-
 }
 
 .contact-us {
     position: absolute;
     bottom: 5vh;
     color: yellow;
-
-
 }
 
 /*...main-container......*/
@@ -258,44 +234,244 @@ select{
     padding: 10px;
 }
 
-
 /*.............course..............*/
+
 .course-wrapper {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    gap:15px;
+    gap: 15px;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
 .course-box {
     width: 23%;
-    /* height: 25vh; */
     background-color: #eee;
     overflow: hidden;
     border-radius: 10px;
     cursor: pointer;
-    
 }
-.course-box:hover{
+
+.course-box:hover {
     box-shadow: 1px 1px 10px royalblue;
     transition: 0.5s;
 }
-.course-thumbnail{
-    width: 100%;
-    height: 17vh;
 
+.course-thumbnail {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
 
 }
-.course-title{
+
+.course-title {
     font-size: 16px;
     text-transform: capitalize;
     text-align: center;
+}
+
+.course-price {
+    font-size: 13px;
+    text-align: center;
 
 }
-.course-price{
-    font-size: 13px;
-     text-align: center;
 
+/* course detail */
+
+.course-detail-page {
+    background-color:#eee;
+    width: 100%;
+    padding: 20px;
+}
+
+.course-detail-container {
+    width: 100%;
+    background-color: white;
+}
+
+.course-detail-main {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.course-detail-image {
+    width: 350px;
+    height: 220px;
+    object-fit: cover;
+    background-color: #f7f2f2;
+    border-radius: 10px;
+}
+
+.course-detail-text {
+
+    width: fit-content;
+    gap: 6px;
+}
+
+.course-detail-title {
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.course-detail-price {
+    font-size: 16px;
+    margin: 2px 0;
+}
+
+.course-detail-description {
+
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    margin-top: 10px;
+    line-height: 1.4;
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: 100px;
+}
+
+.course-des {
+    width: 600px;
+}
+
+.edit-delete {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    gap: 10px;
+}
+.primary-btn {
+    background-color: #7033FF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    background-color: #F65164;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.des {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.studentlist-container {
+    width: 100%;
+    background-color: white;
+    height: auto;
+    min-height: 300px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.student-profile-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 10px;
+
+}
+
+tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+
+th {
+    color: #f65164;
+}
+
+.students-container {
+    height: 80vh;
+    width: 100%;
+    overflow: auto;
+}
+
+/*----------------student detail----------*/
+
+.student-detail-main-wrapper{
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+    
+}
+.student-detail-wrapper{
+    width: 100%;
+    height: 30vh;
+   
+}
+.fee-detail-wrapper{
+    width: 100%;
+    height: 42vh;
+    background-color: #cbc1c1;
+    overflow: auto;
+    border-radius: 5px;
+    padding: 10px;
+}
+.student-detail-header{
+    width: 100%;
+    height: 10vh;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+}
+.student-detail-btn{
+    width: 20%;
+    display: flex;
+    gap: 2%;
+    height: 4vh;
+   
+    
+}
+.sd-detail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10%;
+}
+.sd-detail img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px;
+}
+.payment-history-title{
+    font-size: 20px;
+    color: #7033FF;
+    margin-top: 5vh;
+}
+
+
+/*........ payment history.....*/
+.payment-history-wrapper{
+    height: 80vh;
+    width: 100%;
+overflow: auto;
 }

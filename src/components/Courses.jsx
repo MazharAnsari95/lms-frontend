@@ -1,8 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Courses = () => {
   const [courseList, setCourseList] = useState([]);
+  const naviagte=useNavigate();
 
   useEffect(() => {
     getCourses()
@@ -31,7 +33,7 @@ const Courses = () => {
     <div className='course-wrapper'>
       {
         courseList.map((course) => (
-          <div className='course-box' key={course._id}>
+          <div  onClick={()=>{naviagte('/dashboard/course-detail/'+course._id)}}className='course-box' key={course._id}>
             <img alt='thumbnail' className='course-thumbnail' src={course.imageUrl}/>
             <h2 className='course-title'>{course.courseName}</h2>
             <p className='course-price'> Rs. {course.price} only </p>

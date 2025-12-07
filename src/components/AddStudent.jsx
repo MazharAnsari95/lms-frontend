@@ -1,20 +1,40 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const AddStudents = () => {
- 
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [courseId, setCourseId] = useState('');
   const [image, setImage] = useState(null);
-
   const [imageUrl, setImageUrl] = useState('');
   const [isLoading, setLoading] = useState('');
   const [courseList, setCourseList] = useState([]);
-  const navigate=useNavigate();
-  
-   useEffect(() => {
-    getCourses()
-  },[])
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getCourses();
+    if (location.state) {
+      setFullName(location.state.student.fullName);
+      setEmail(location.state.student.email);
+      setPhone(location.state.student.phone);
+      setAddress(location.state.student.address);
+      setCourseId(location.state.student.courseId);
+      setImageUrl(location.state.student.imageUrl);
+    }
+    else {
+      setFullName('');
+      setEmail('');
+      setPhone('');
+      setAddress('');
+      setCourseId('');
+      setImageUrl('');
+    }
+  }, [location])
   const getCourses = () => {
     axios.get('http://localhost:8020/course/all-courses', {
       headers: {
@@ -23,7 +43,7 @@ const AddStudents = () => {
     })
       .then(res => {
         console.log(res.data.courses);
-       
+
         // setCourseList(res.data.Courses);
         setCourseList(res.data.courses || res.data.Courses || []);
 
@@ -41,24 +61,53 @@ const AddStudents = () => {
     e.preventDefault();
     setLoading(true);
     const formData = new FormData();
-    
-    formData.append('image', image);
-    axios.post('http://localhost:8020/course/add-course', formData, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    })
-      .then(res => {
-        setLoading(false);
-        console.log(res.data);
-        toast.success(' new Course Added Successfully');
-        navigate('/dashboard/courses');
+    formData.append('fullName', fullName);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('address', address);
+    formData.append('courseId', courseId);
+
+    if (image) {
+      formData.append('image', image);
+    }
+    if (location.state) {
+      axios.put('http://localhost:8020/student/' + location.state.student._id, formData, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
       })
-      .catch(err => {
-        setLoading(false);
-        console.log(err);
-        toast.error('something is wrong...');
+        .then(res => {
+          setLoading(false);
+          console.log(res.data);
+          toast.success('student detail updated Successfully');
+          navigate('/dashboard/student-detail/' + location.state.student._id);
+        })
+        .catch(err => {
+          setLoading(false);
+          console.log(err);
+          toast.error('something is wrong...');
+        })
+    }
+    else {
+      axios.post('http://localhost:8020/student/add-student', formData, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
       })
+        .then(res => {
+          setLoading(false);
+          console.log(res.data);
+          toast.success(' new student added Successfully');
+          navigate('/dashboard/courses');
+        })
+        .catch(err => {
+          setLoading(false);
+          console.log(err);
+          toast.error('something is wrong...');
+        })
+    }
+
+
   }
 
   const fileHandler = (e) => {
@@ -69,21 +118,21 @@ const AddStudents = () => {
   return (
     <div>
       <form onSubmit={submitHandler} className='form'>
-        <h1>Add New Student</h1>
-        <input  placeholder='Student Name'/>
-        <input  placeholder='Phone Number'/>
-        <input  placeholder='Email'/>
-        <input  placeholder=' Full Address'/>
-        <select> 
+        <h1>{location.state ? 'Edit Student  Detail' : 'Add New Student'}</h1>
+        <input value={fullName} onChange={(e) => { setFullName(e.target.value) }} placeholder='Student Name' />
+        <input value={phone} onChange={(e) => { setPhone(e.target.value) }} placeholder='Phone Number' />
+        <input value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder='Email' />
+        <input value={address} onChange={(e) => { setAddress(e.target.value) }} placeholder=' Full Address' />
+        <select disabled={location.state} value={courseId} onChange={(e) => { setCourseId(e.target.value) }}>
           <option>Select Course</option>
           {
-            courseList.map((course)=>(
-              <option>{course.courseName}</option>
+            courseList.map((course) => (
+              <option value={course._id}>{course.courseName}</option>
             ))
           }
         </select>
-        <input required onChange={fileHandler} type='file' />
-        {imageUrl && <img className='your-logo' alt='Your logo' src={imageUrl} />}
+        <input required={!location.state} onChange={fileHandler} type='file' />
+        {imageUrl && <img className='your-logo' alt='student-pic' src={imageUrl} />}
         <button type='submit' className='submit-btn'>{isLoading && <i className="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
       </form>
     </div>
