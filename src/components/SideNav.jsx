@@ -26,8 +26,8 @@ const SideNav = () => {
 
             </div>
             <div className='contact-us'>
-                <p> <i class="fa-solid fa-address-book"></i>Contact Developer</p>
-                <p><i class="fa-solid fa-phone"></i> 9661557369</p>
+                <p> <i className="fa-solid fa-address-book"></i>Contact Developer</p>
+                <p><i className="fa-solid fa-phone"></i> 9661557369</p>
             </div>
         </div>
     )

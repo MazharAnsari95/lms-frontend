@@ -12,9 +12,9 @@
 .signup-box {
     width: 80%;
     height: auto;
-    /* FIX */
+    
     min-height: 80vh;
-    /* FIX */
+  
     background-color: white;
     border-radius: 10px;
     display: flex;
@@ -45,14 +45,12 @@
     width: 50%;
     padding: 10px;
     height: 100%;
-    /* FIX */
+   
 }
 
 .form {
     height: auto;
-    /* FIX */
     min-height: 80vh;
-    /* FIX */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -105,7 +103,6 @@ select {
 .dashboard-container {
     width: 95%;
     height: 100%;
-    /* FIX */
     background-color: white;
     border-radius: 10px;
     display: flex;
@@ -116,7 +113,6 @@ select {
 .nav-container {
     width: 20%;
     height: 100%;
-    /* FIX */
     background-color: #7033FF;
     padding: 10px;
 }
@@ -124,10 +120,10 @@ select {
 .main-container {
     width: 80%;
     height: 100%;
-    /* FIX */
+   
     background-color: white;
     overflow-y: auto;
-    /* FIX */
+    
 }
 
 .top-bar {
@@ -251,6 +247,7 @@ select {
     overflow: hidden;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .course-box:hover {
@@ -474,4 +471,218 @@ th {
     height: 80vh;
     width: 100%;
 overflow: auto;
+}
+
+/*---home--------*/
+.home-wrapper{
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+   
+}
+.count-box-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2%;
+}
+.box{
+    width: 31%;
+    height: 25vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+}
+.box1{
+   
+    background-color: #b7a0ec;
+}
+.box2{
+     
+     background-color: #b8757d;
+}
+.box3{
+    
+    background-color: #89cfc1;
+}
+.box p{
+    font-size:15px;
+    
+}
+.list-container{
+    width: 100%;
+    height: 52vh;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+}
+.table-container{
+    width: 48%;
+    background-color: rgb(246, 243, 243);
+    border-radius: 5px;
+    padding: 1%;
+   
+    
+
+}
+/* =======================================================
+   RESPONSIVE CODE STARTS HERE — IMPROVED VERSION
+   ======================================================= */
+
+/* TABLET AND SMALL SCREENS */
+@media (max-width: 768px) {
+
+    /* Signup/Login */
+    .signup-box {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .signup-left,
+    .signup-right {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .form input,
+    .form select,
+    .form button {
+        width: 100%;
+        box-sizing: border-box; /* ensures padding doesn't break width */
+    }
+
+    /* Dashboard layout */
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .nav-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .main-container {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Courses */
+    .course-box {
+        width: 48%;
+        margin-top: 15px;
+    }
+
+    .course-detail-main {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .course-des {
+        width: 100%;
+    }
+
+    /* Student detail */
+    .sd-detail {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .sd-detail img {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+    }
+
+    .student-detail-btn {
+        width: 100%; /* Full width for buttons */
+        justify-content: space-around;
+    }
+
+    /* Home boxes */
+    .count-box-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .box {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        text-align: center; /* center text for smaller screens */
+    }
+
+    .list-container {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+    }
+
+    .table-container {
+        width: 100%;
+    }
+}
+
+/* SMALL MOBILE DEVICES */
+@media (max-width: 480px) {
+
+    .signup-left-heading {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .signup-left-para {
+        font-size: 13px;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .course-box {
+        width: 100%;
+    }
+
+    .course-detail-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .student-profile-pic {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+
+    .top-bar {
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap; /* wrap icons and profile on small screens */
+    }
+
+    .profile-name {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .student-detail-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .student-detail-btn {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* prevent horizontal overflow */
+    body, html {
+        overflow-x: hidden;
+    }
 }

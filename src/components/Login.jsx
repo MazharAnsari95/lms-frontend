@@ -47,7 +47,7 @@ const Login = () => {
       <div className='signup-box'>
         <div className='signup-left'>
           <img src={logo} alt="book logo" />
-          <h1 className='signup-left-heading'>Learning Management System</h1>
+          <h1 className='signup-left-heading'>Institute Management System</h1>
           <p className='signup-left-para'>Manage Your All data in easy way...</p>
 
         </div>

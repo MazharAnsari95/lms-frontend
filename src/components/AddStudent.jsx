@@ -98,7 +98,7 @@ const AddStudents = () => {
           setLoading(false);
           console.log(res.data);
           toast.success(' new student added Successfully');
-          navigate('/dashboard/courses');
+          navigate('/dashboard/course-detail/'+courseId);
         })
         .catch(err => {
           setLoading(false);

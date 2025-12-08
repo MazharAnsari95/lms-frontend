@@ -32,10 +32,11 @@ const PaymentHistory = () => {
      
         <table>
           <thead>
-            <th>student's Name</th>
+            <tr><th>student's Name</th>
             <th>Date and Time</th>
             <th>Amount</th>
             <th>Remark</th>
+            </tr>
           </thead>
           <tbody>
             {
