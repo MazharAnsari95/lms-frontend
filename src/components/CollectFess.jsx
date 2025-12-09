@@ -25,7 +25,7 @@ const CollectFess = () => {
 
 
   const getCourses = () => {
-    axios.get('http://localhost:8020/course/all-courses', {
+    axios.get('https://lms-backend-3-uxht.onrender.com/course/all-courses', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }
@@ -46,7 +46,7 @@ const CollectFess = () => {
   }
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8020/fee/add-fee', {
+    axios.post('https://lms-backend-3-uxht.onrender.com/fee/add-fee', {
       fullName: fullName,
       amount: amount,
       phone: phone,

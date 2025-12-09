@@ -17,7 +17,7 @@ const StudentDetail = () => {
     getStudentDetail();
   }, [])
   const getStudentDetail = () => {
-    axios.get('http://localhost:8020/student/student-detail/' + params.id, {
+    axios.get('https://lms-backend-3-uxht.onrender.com/student/student-detail/' + params.id, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }
@@ -37,7 +37,7 @@ const StudentDetail = () => {
   }
    const deleteStudent=(studentId)=>{
         if(window.confirm('Are you sure you want to delete this course?')){
-axios.delete('http://localhost:8020/student/'+studentId, {
+axios.delete('https://lms-backend-3-uxht.onrender.com/student/'+studentId, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }

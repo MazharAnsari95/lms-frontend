@@ -26,7 +26,7 @@ const Signup = () => {
     formData.append('phone', phone);
     formData.append('password', password);
     formData.append('image', image);
-    axios.post('http://localhost:8020/user/signup', formData)
+    axios.post('https://lms-backend-3-uxht.onrender.com/user/signup', formData)
       .then(res => {
         setLoading(false);
         toast.success('Signup Successfully create');

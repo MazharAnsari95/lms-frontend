@@ -15,7 +15,7 @@ const Home = () => {
   }, []);
 
   const getHomeDetails = () => {
-    axios.get('http://localhost:8020/course/home', {
+    axios.get('https://lms-backend-3-uxht.onrender.com/course/home', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }

@@ -10,7 +10,7 @@ const PaymentHistory = () => {
   getPaymentHistory();
   },[]);
     const getPaymentHistory = () => {
-    axios.get('http://localhost:8020/fee/payment-history/', {
+    axios.get('https://lms-backend-3-uxht.onrender.com/fee/payment-history/', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }

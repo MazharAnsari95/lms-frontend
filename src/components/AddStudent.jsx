@@ -36,7 +36,7 @@ const AddStudents = () => {
     }
   }, [location])
   const getCourses = () => {
-    axios.get('http://localhost:8020/course/all-courses', {
+    axios.get('https://lms-backend-3-uxht.onrender.com/course/all-courses', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }
@@ -71,7 +71,7 @@ const AddStudents = () => {
       formData.append('image', image);
     }
     if (location.state) {
-      axios.put('http://localhost:8020/student/' + location.state.student._id, formData, {
+      axios.put('https://lms-backend-3-uxht.onrender.com/student/' + location.state.student._id, formData, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
@@ -89,7 +89,7 @@ const AddStudents = () => {
         })
     }
     else {
-      axios.post('http://localhost:8020/student/add-student', formData, {
+      axios.post('https://lms-backend-3-uxht.onrender.com/student/add-student', formData, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }

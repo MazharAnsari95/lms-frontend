@@ -12,7 +12,7 @@ const Students = () => {
 
 
   const getStudentList=() => {
-        axios.get('http://localhost:8020/student/all-student', {
+        axios.get('https://lms-backend-3-uxht.onrender.com/student/all-student', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }

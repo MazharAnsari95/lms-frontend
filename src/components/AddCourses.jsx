@@ -54,7 +54,7 @@ const AddCourses = () => {
     }
 
     if (location.state) {
-      axios.put('http://localhost:8020/course/' + location.state.course._id, formData, {
+      axios.put('https://lms-backend-3-uxht.onrender.com/course/' + location.state.course._id, formData, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
@@ -72,7 +72,7 @@ const AddCourses = () => {
         })
     }
     else{
- axios.post('http://localhost:8020/course/add-course', formData, {
+ axios.post('https://lms-backend-3-uxht.onrender.com/course/add-course', formData, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }

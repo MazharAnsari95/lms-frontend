@@ -18,7 +18,7 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     setLoading(true);
-    axios.post('http://localhost:8020/user/login', {
+    axios.post('https://lms-backend-3-uxht.onrender.com/user/login', {
       email: email,
       password: password
     })
