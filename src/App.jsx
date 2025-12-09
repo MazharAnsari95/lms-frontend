@@ -13,7 +13,7 @@ import AddStudent from './components/AddStudent';
 import CollectFess from './components/CollectFess';
 import PaymentHistory from './components/PaymentHistory';
 import CourseDetail from './components/CourseDetail';
-// import StudentDetail from './components/Studentdetail';
+import StudentDetail from './components/Details';
 
 
 
@@ -36,7 +36,7 @@ const App = () => {
         { path: 'course-detail/:id', Component: CourseDetail},
         { path: 'update-course/:id', Component: AddCourses},
         { path: 'update-student/:id', Component: AddStudent},
-        // { path: 'student-detail/:id', Component: StudentDetail}
+        { path: 'student-detail/:id', Component: StudentDetail}
 
 
       ]
