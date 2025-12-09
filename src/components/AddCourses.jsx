@@ -41,12 +41,14 @@ const AddCourses = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setLoading(true);
+      const startISO = new Date(startingDate).toISOString();
+  const endISO = new Date(endDate).toISOString();
     const formData = new FormData();
     formData.append('courseName', courseName);
     formData.append('description', description);
     formData.append('price', price);
-    formData.append('startingDate', startingDate);
-    formData.append('endDate', endDate);
+    formData.append('startingDate', startISO);
+    formData.append('endDate', endISO);
 
     if(image)
     {

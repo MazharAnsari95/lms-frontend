@@ -83,6 +83,9 @@ axios.delete('https://lms-backend-3-uxht.onrender.com/student/'+studentId, {
         </div>
       </div>
       <br />
+      <br />
+      <br />
+      <br />
       <h2 className='payment-history-title'>payment History</h2>
       <div className='fee-detail-wrapper'>
         <table>
