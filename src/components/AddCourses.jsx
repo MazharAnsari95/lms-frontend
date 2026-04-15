@@ -1,41 +1,22 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { api, getErrorMessage } from '../lib/api';
 
 const AddCourses = () => {
-  const [courseName, setCourseName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState(0);
-  const [startingDate, setStartingDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const location = useLocation();
+  const editingCourse = location.state?.course;
+
+  const [courseName, setCourseName] = useState(editingCourse?.courseName || '');
+  const [description, setDescription] = useState(editingCourse?.description || '');
+  const [price, setPrice] = useState(editingCourse?.price || 0);
+  const [startingDate, setStartingDate] = useState(editingCourse?.startingDate || '');
+  const [endDate, setEndDate] = useState(editingCourse?.endDate || '');
   const [image, setImage] = useState(null);
 
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState(editingCourse?.imageUrl || '');
   const [isLoading, setLoading] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    console.log('hi')
-    if (location.state) {
-      console.log(location.state.course);
-      setCourseName(location.state.course.courseName)
-      setDescription(location.state.course.description);
-      setPrice(location.state.course.price);
-      setStartingDate(location.state.course.startingDate);
-      setEndDate(location.state.course.endDate);
-      setImageUrl(location.state.course.imageUrl);
-    }
-    else{
-      setCourseName('')
-      setDescription('');
-      setPrice(0);
-      setStartingDate('');
-      setEndDate('');
-      setImageUrl('');
-    }
-  }, [location])
 
 
   const submitHandler = (e) => {
@@ -56,11 +37,7 @@ const AddCourses = () => {
     }
 
     if (location.state) {
-      axios.put('https://lms-backend-3-uxht.onrender.com/course/' + location.state.course._id, formData, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
-      })
+      api.put('/course/' + location.state.course._id, formData)
         .then(res => {
           setLoading(false);
           console.log(res.data);
@@ -70,15 +47,11 @@ const AddCourses = () => {
         .catch(err => {
           setLoading(false);
           console.log(err);
-          toast.error('something is wrong...');
+          toast.error(getErrorMessage(err));
         })
     }
     else{
- axios.post('https://lms-backend-3-uxht.onrender.com/course/add-course', formData, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+ api.post('/course/add-course', formData)
       .then(res => {
         setLoading(false);
         console.log(res.data);
@@ -88,7 +61,7 @@ const AddCourses = () => {
       .catch(err => {
         setLoading(false);
         console.log(err);
-        toast.error('something is wrong...');
+        toast.error(getErrorMessage(err));
       })
     }
    

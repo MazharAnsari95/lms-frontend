@@ -1,46 +1,25 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { api, getErrorMessage } from '../lib/api';
 
 const AddStudents = () => {
-  const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
-  const [courseId, setCourseId] = useState('');
+  const location = useLocation();
+  const editingStudent = location.state?.student;
+
+  const [fullName, setFullName] = useState(editingStudent?.fullName || '');
+  const [phone, setPhone] = useState(editingStudent?.phone || '');
+  const [email, setEmail] = useState(editingStudent?.email || '');
+  const [address, setAddress] = useState(editingStudent?.address || '');
+  const [courseId, setCourseId] = useState(editingStudent?.courseId || '');
   const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState(editingStudent?.imageUrl || '');
   const [isLoading, setLoading] = useState('');
   const [courseList, setCourseList] = useState([]);
-  const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getCourses();
-    if (location.state) {
-      setFullName(location.state.student.fullName);
-      setEmail(location.state.student.email);
-      setPhone(location.state.student.phone);
-      setAddress(location.state.student.address);
-      setCourseId(location.state.student.courseId);
-      setImageUrl(location.state.student.imageUrl);
-    }
-    else {
-      setFullName('');
-      setEmail('');
-      setPhone('');
-      setAddress('');
-      setCourseId('');
-      setImageUrl('');
-    }
-  }, [location])
-  const getCourses = () => {
-    axios.get('https://lms-backend-3-uxht.onrender.com/course/all-courses', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+  function getCourses() {
+    api.get('/course/all-courses', { params: { page: 1, limit: 100 } })
       .then(res => {
         console.log(res.data.courses);
 
@@ -52,9 +31,13 @@ const AddStudents = () => {
       .catch(err => {
 
         console.log(err);
-        toast.error('something is wrong...');
+        toast.error(getErrorMessage(err));
       })
   }
+
+  useEffect(() => {
+    getCourses();
+  }, [])
 
 
   const submitHandler = (e) => {
@@ -71,11 +54,7 @@ const AddStudents = () => {
       formData.append('image', image);
     }
     if (location.state) {
-      axios.put('https://lms-backend-3-uxht.onrender.com/student/' + location.state.student._id, formData, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
-      })
+      api.put('/student/' + location.state.student._id, formData)
         .then(res => {
           setLoading(false);
           console.log(res.data);
@@ -85,15 +64,11 @@ const AddStudents = () => {
         .catch(err => {
           setLoading(false);
           console.log(err);
-          toast.error('something is wrong...');
+          toast.error(getErrorMessage(err));
         })
     }
     else {
-      axios.post('https://lms-backend-3-uxht.onrender.com/student/add-student', formData, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
-      })
+      api.post('/student/add-student', formData)
         .then(res => {
           setLoading(false);
           console.log(res.data);
@@ -103,7 +78,7 @@ const AddStudents = () => {
         .catch(err => {
           setLoading(false);
           console.log(err);
-          toast.error('something is wrong...');
+          toast.error(getErrorMessage(err));
         })
     }
 

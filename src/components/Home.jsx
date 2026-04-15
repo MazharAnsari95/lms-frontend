@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import { api, getErrorMessage } from '../lib/api';
 
 const Home = () => {
   const [totalCourse, setTotalCourse] = useState(0);
@@ -10,16 +10,8 @@ const Home = () => {
   const [students, setStudents] = useState([]);
   const [fees, setFees] = useState([]);
 
-  useEffect(() => {
-    getHomeDetails();
-  }, []);
-
-  const getHomeDetails = () => {
-    axios.get('https://lms-backend-3-uxht.onrender.com/course/home', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+  function getHomeDetails() {
+    api.get('/course/home')
       .then(res => {
         console.log(res.data);
         setTotalCourse(res.data.totalCourse);
@@ -30,9 +22,13 @@ const Home = () => {
       })
       .catch(err => {
         console.log("API Error:", err);
-        toast.error('Something is wrong...');
+        toast.error(getErrorMessage(err));
       });
-  };
+  }
+
+  useEffect(() => {
+    getHomeDetails();
+  }, []);
 
   return (
     <div className='home-wrapper'>

@@ -14,6 +14,10 @@ import CollectFess from './components/CollectFess';
 import PaymentHistory from './components/PaymentHistory';
 import CourseDetail from './components/CourseDetail';
 import StudentDetail from './components/Details';
+import Assignments from './components/Assignments';
+import AddAssignment from './components/AddAssignment';
+import AssignmentDetail from './components/AssignmentDetail';
+import SubmitAssignment from './components/SubmitAssignment';
 
 
 
@@ -31,6 +35,10 @@ const App = () => {
         { path: 'add-course', Component: AddCourses },
         { path: 'students', Component: Students },
         { path: 'add-student', Component: AddStudent },
+        { path: 'assignments', Component: Assignments },
+        { path: 'add-assignment', Component: AddAssignment },
+        { path: 'assignment-detail/:id', Component: AssignmentDetail },
+        { path: 'submit-assignment/:id', Component: SubmitAssignment },
         { path: 'collect-fee', Component: CollectFess },
         { path: 'payment-history', Component: PaymentHistory},
         { path: 'course-detail/:id', Component: CourseDetail},

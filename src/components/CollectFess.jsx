@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { api, getErrorMessage } from '../lib/api';
 
 const CollectFess = () => {
   const [fullName, setFullName] = useState('');
@@ -19,17 +19,8 @@ const CollectFess = () => {
 
 
 
-  useEffect(() => {
-    getCourses()
-  }, [])
-
-
-  const getCourses = () => {
-    axios.get('https://lms-backend-3-uxht.onrender.com/course/all-courses', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+  function getCourses() {
+    api.get('/course/all-courses', { params: { page: 1, limit: 100 } })
       .then(res => {
         console.log(res.data.courses);
 
@@ -41,21 +32,21 @@ const CollectFess = () => {
       .catch(err => {
 
         console.log(err);
-        toast.error('something is wrong...');
+        toast.error(getErrorMessage(err));
       })
   }
+
+  useEffect(() => {
+    getCourses()
+  }, [])
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post('https://lms-backend-3-uxht.onrender.com/fee/add-fee', {
+    api.post('/fee/add-fee', {
       fullName: fullName,
       amount: amount,
       phone: phone,
       remark: remark,
       courseId: courseId
-    }, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
     })
       .then(res => {
         setLoading(false);
@@ -66,7 +57,7 @@ const CollectFess = () => {
       .catch(err => {
         setLoading(false);
         console.log(err);
-        toast.error('something is wrong...');
+        toast.error(getErrorMessage(err));
       })
   }
   return (

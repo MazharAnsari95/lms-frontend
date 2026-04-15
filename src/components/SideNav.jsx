@@ -3,10 +3,10 @@ import '../components/style.css'
 import logo from '../assets/logoo.png';
 import { Link, useLocation } from 'react-router-dom';
 
-const SideNav = () => {
+const SideNav = ({ navOpen, onClose }) => {
     const location = useLocation();
     return (
-        <div className='nav-container'>
+        <div className={navOpen ? 'nav-container nav-open' : 'nav-container'}>
             <div className='brand-container'>
                 <img className='profile-logo' src={logo} alt="brand-logo" />
                 <div>
@@ -15,13 +15,14 @@ const SideNav = () => {
                 </div>
             </div>
             <div className='menu-container'>
-                <Link to='/dashboard/home' className={location.pathname === '/dashboard/home' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-house"></i> Home</Link>
-                <Link to='/dashboard/courses' className={location.pathname === '/dashboard/courses' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-book"></i> All Course</Link>
-                <Link to='/dashboard/add-course' className={location.pathname === '/dashboard/add-course' ? 'menu-active-link' : 'menu-link'}><i className="fa-sharp fa-solid fa-plus"></i> Add Courses</Link>
-                <Link to='/dashboard/students' className={location.pathname === '/dashboard/students' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-user-group"></i> All Students</Link>
-                <Link to='/dashboard/add-student' className={location.pathname === '/dashboard/add-student' ? 'menu-active-link' : 'menu-link'}><i className="fa-sharp fa-solid fa-plus"></i> Add Students</Link>
-                <Link to='/dashboard/collect-fee' className={location.pathname === '/dashboard/collect-fee' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-money-bill"></i> Collect Fee</Link>
-                <Link to='/dashboard/payment-history' className={location.pathname === '/dashboard/payment-history' ? 'menu-active-link' : 'menu-link'}> <i className="fa-solid fa-list"></i> Payment History</Link>
+                <Link onClick={onClose} to='/dashboard/home' className={location.pathname === '/dashboard/home' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-house"></i> Home</Link>
+                <Link onClick={onClose} to='/dashboard/courses' className={location.pathname === '/dashboard/courses' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-book"></i> All Course</Link>
+                <Link onClick={onClose} to='/dashboard/add-course' className={location.pathname === '/dashboard/add-course' ? 'menu-active-link' : 'menu-link'}><i className="fa-sharp fa-solid fa-plus"></i> Add Courses</Link>
+                <Link onClick={onClose} to='/dashboard/students' className={location.pathname === '/dashboard/students' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-user-group"></i> All Students</Link>
+                <Link onClick={onClose} to='/dashboard/add-student' className={location.pathname === '/dashboard/add-student' ? 'menu-active-link' : 'menu-link'}><i className="fa-sharp fa-solid fa-plus"></i> Add Students</Link>
+                <Link onClick={onClose} to='/dashboard/assignments' className={location.pathname === '/dashboard/assignments' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-clipboard-list"></i> Assignments</Link>
+                <Link onClick={onClose} to='/dashboard/collect-fee' className={location.pathname === '/dashboard/collect-fee' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-money-bill"></i> Collect Fee</Link>
+                <Link onClick={onClose} to='/dashboard/payment-history' className={location.pathname === '/dashboard/payment-history' ? 'menu-active-link' : 'menu-link'}> <i className="fa-solid fa-list"></i> Payment History</Link>
 
 
             </div>

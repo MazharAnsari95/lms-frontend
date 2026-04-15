@@ -1,58 +1,111 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
+import Pagination from './Pagination';
+import { api, getErrorMessage } from '../lib/api';
 
 const PaymentHistory = () => {
-  const [paymentList,setPaymentList]=useState([]);
+  const MotionTr = motion.tr;
+  const [paymentList, setPaymentList] = useState([]);
+  const [meta, setMeta] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [q, setQ] = useState('');
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
 
 
   useEffect(()=>{
-  getPaymentHistory();
+    getPaymentHistory();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
-    const getPaymentHistory = () => {
-    axios.get('https://lms-backend-3-uxht.onrender.com/fee/payment-history/', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    })
-      .then(res => {
-        console.log(res.data);
-        setPaymentList(res.data.paymentHistory.reverse());
-        
 
-      })
-      .catch(err => {
+  const params = useMemo(
+    () => ({ page, limit, q: q.trim(), sortBy: 'createdAt', order: 'desc' }),
+    [page, limit, q]
+  );
 
-        console.log(err);
-        toast.error('something is wrong...');
+  useEffect(() => {
+    const t = setTimeout(() => {
+      getPaymentHistory();
+    }, 250);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
+
+  const getPaymentHistory = () => {
+    setIsLoading(true);
+    api
+      .get('/fee/payment-history', { params })
+      .then((res) => {
+        setPaymentList(res.data.paymentHistory || []);
+        setMeta(res.data.meta || null);
       })
-  }
+      .catch((err) => {
+        toast.error(getErrorMessage(err));
+      })
+      .finally(() => setIsLoading(false));
+  };
   return (
-    <div className='payment-history-wrapper'>
-     
+    <div>
+      <div className="list-toolbar">
+        <input
+          className="list-search"
+          value={q}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setPage(1);
+          }}
+          placeholder="Search payments (name / phone / remark)"
+        />
+        <select
+          className="list-select"
+          value={limit}
+          onChange={(e) => {
+            setLimit(parseInt(e.target.value, 10));
+            setPage(1);
+          }}
+        >
+          <option value={5}>5 / page</option>
+          <option value={10}>10 / page</option>
+          <option value={20}>20 / page</option>
+          <option value={50}>50 / page</option>
+        </select>
+      </div>
+
+      {isLoading && <div className="inline-loading">Loading…</div>}
+      {!isLoading && paymentList.length === 0 && (
+        <div className="empty-state">No payments found.</div>
+      )}
+
+      <div className='payment-history-wrapper'>
         <table>
           <thead>
-            <tr><th>student's Name</th>
-            <th>Date and Time</th>
-            <th>Amount</th>
-            <th>Remark</th>
+            <tr>
+              <th>Student's Name</th>
+              <th>Date & Time</th>
+              <th>Amount</th>
+              <th>Remark</th>
             </tr>
           </thead>
           <tbody>
-            {
-              paymentList.map((payment) => (
-                <tr key={payment._id}>
-                  <td>{payment.fullName}</td>
-                  <td>{payment.
-                    createdAt}</td>
-                  <td>{payment.amount}</td>
-                  <td>{payment.remark}</td>
-                </tr>
-              ))
-            }
+            {paymentList.map((payment) => (
+              <MotionTr
+                key={payment._id}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <td>{payment.fullName}</td>
+                <td>{new Date(payment.createdAt).toLocaleString()}</td>
+                <td>{payment.amount}</td>
+                <td>{payment.remark}</td>
+              </MotionTr>
+            ))}
           </tbody>
         </table>
-      
+      </div>
+
+      <Pagination meta={meta} onPageChange={setPage} />
     </div>
   )
 }

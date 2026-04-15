@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { api, getErrorMessage } from '../lib/api';
 
 const StudentDetail = () => {
 
@@ -13,15 +13,8 @@ const StudentDetail = () => {
   const params = useParams()
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getStudentDetail();
-  }, [])
-  const getStudentDetail = () => {
-    axios.get('https://lms-backend-3-uxht.onrender.com/student/student-detail/' + params.id, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+  function getStudentDetail() {
+    api.get('/student/student-detail/' + params.id)
       .then(res => {
         console.log(res.data);
         setStudent(res.data.studentDetail);
@@ -32,16 +25,17 @@ const StudentDetail = () => {
       .catch(err => {
 
         console.log(err);
-        toast.error('something is wrong...');
+        toast.error(getErrorMessage(err));
       })
   }
+
+  useEffect(() => {
+    getStudentDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id])
    const deleteStudent=(studentId)=>{
         if(window.confirm('Are you sure you want to delete this course?')){
-axios.delete('https://lms-backend-3-uxht.onrender.com/student/'+studentId, {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-        })
+api.delete('/student/'+studentId)
             .then(res => {
                 console.log(res.data);
             navigate('/dashboard/course-detail/'+course._id);
@@ -50,7 +44,7 @@ axios.delete('https://lms-backend-3-uxht.onrender.com/student/'+studentId, {
             .catch(err => {
 
                 console.log(err);
-                toast.error('something is wrong...');
+                toast.error(getErrorMessage(err));
             })
         }
     }
@@ -62,8 +56,14 @@ axios.delete('https://lms-backend-3-uxht.onrender.com/student/'+studentId, {
         <div className='student-detail-header'>
           <h2>Student Full Detail</h2>
           <div className='student-detail-btn'>
-            <button className='primary-btn' onClick={() => { navigate('/dashboard/update-student/' + student._id, { state: { student } }) }}>Edit</button>
-            <button className='secondary-btn' onClick={()=>{deleteStudent(student._id)}}>Delete</button>
+            <button className='btn btn-primary' onClick={() => { navigate('/dashboard/update-student/' + student._id, { state: { student } }) }}>
+              <i className="fa-solid fa-pen-to-square"></i>
+              Edit
+            </button>
+            <button className='btn btn-danger' onClick={()=>{deleteStudent(student._id)}}>
+              <i className="fa-solid fa-trash"></i>
+              Delete
+            </button>
           </div>
         </div>
 

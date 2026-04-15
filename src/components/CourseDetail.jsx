@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { api, getErrorMessage } from '../lib/api';
 
 const CourseDetail = () => {
     const params = useParams();
@@ -12,15 +12,8 @@ const CourseDetail = () => {
     const navigate=useNavigate();
 
 
-    useEffect(() => {
-        getCourseDetail()
-    }, [])
-    const getCourseDetail = () => {
-        axios.get('https://lms-backend-3-uxht.onrender.com/course/course-detail/' + params.id, {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-        })
+    function getCourseDetail() {
+        api.get('/course/course-detail/' + params.id)
             .then(res => {
                 console.log(res.data);
                 console.log(res.data.course);
@@ -35,16 +28,17 @@ const CourseDetail = () => {
             .catch(err => {
 
                 console.log(err);
-                toast.error('something is wrong...');
+                toast.error(getErrorMessage(err));
             })
     }
+
+    useEffect(() => {
+        getCourseDetail()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [params.id])
     const deleteCourse=(courseId)=>{
         if(window.confirm('Are you sure you want to delete this course?')){
-axios.delete('https://lms-backend-3-uxht.onrender.com/course/'+courseId, {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-        })
+api.delete('/course/'+courseId)
             .then(res => {
                 console.log(res.data);
             navigate('/dashboard/courses');
@@ -52,7 +46,7 @@ axios.delete('https://lms-backend-3-uxht.onrender.com/course/'+courseId, {
             .catch(err => {
 
                 console.log(err);
-                toast.error('something is wrong...');
+                toast.error(getErrorMessage(err));
             })
         }
     }
@@ -77,8 +71,14 @@ axios.delete('https://lms-backend-3-uxht.onrender.com/course/'+courseId, {
                         </div>
                         <div className='course-des'>
                             <div className='edit-delete'>
-                                <button className='primary-btn' onClick={()=>{navigate('/dashboard/update-course/'+course._id,{state:{course}})}}>Edit</button>
-                                <button className='secondary-btn' onClick={()=>{deleteCourse(course._id)}}>Delete</button>
+                                <button className='btn btn-primary' onClick={()=>{navigate('/dashboard/update-course/'+course._id,{state:{course}})}}>
+                                  <i className="fa-solid fa-pen-to-square"></i>
+                                  Edit
+                                </button>
+                                <button className='btn btn-danger' onClick={()=>{deleteCourse(course._id)}}>
+                                  <i className="fa-solid fa-trash"></i>
+                                  Delete
+                                </button>
                             </div>
                             <h3 className='des'>Course Description</h3>
                             <div>

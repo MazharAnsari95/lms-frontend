@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import '../components/style.css'
 import logo from '../assets/logoo.png';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { api, getErrorMessage } from '../lib/api';
 
 
 
@@ -26,7 +26,7 @@ const Signup = () => {
     formData.append('phone', phone);
     formData.append('password', password);
     formData.append('image', image);
-    axios.post('https://lms-backend-3-uxht.onrender.com/user/signup', formData)
+    api.post('/user/signup', formData)
       .then(res => {
         setLoading(false);
         toast.success('Signup Successfully create');
@@ -35,7 +35,7 @@ const Signup = () => {
       })
       .catch(err => {
          setLoading(false);
-         toast.error('something is wrong')
+         toast.error(getErrorMessage(err))
         console.log(err);
       })
   }

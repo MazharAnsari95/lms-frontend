@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import '../components/style.css'
 import logo from '../assets/logoo.png';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { api, getErrorMessage } from '../lib/api';
 
 
 
@@ -18,7 +18,7 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     setLoading(true);
-    axios.post('https://lms-backend-3-uxht.onrender.com/user/login', {
+    api.post('/user/login', {
       email: email,
       password: password
     })
@@ -37,7 +37,7 @@ const Login = () => {
 
       .catch(err => {
         setLoading(false);
-        toast.error('something is wrong')
+        toast.error(getErrorMessage(err))
         console.log(err);
       })
   }
