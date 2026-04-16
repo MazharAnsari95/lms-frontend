@@ -45,6 +45,17 @@ const PaymentHistory = () => {
       })
       .finally(() => setIsLoading(false));
   };
+
+  const openReceipt = async (feeId) => {
+    try {
+      const res = await api.get(`/receipt/fee/${feeId}/pdf`, { responseType: 'blob' });
+      const url = window.URL.createObjectURL(new Blob([res.data], { type: 'application/pdf' }));
+      window.open(url, '_blank');
+    } catch (err) {
+      toast.error(getErrorMessage(err));
+    }
+  };
+
   return (
     <div>
       <div className="list-toolbar">
@@ -85,6 +96,7 @@ const PaymentHistory = () => {
               <th>Date & Time</th>
               <th>Amount</th>
               <th>Remark</th>
+              <th>Receipt</th>
             </tr>
           </thead>
           <tbody>
@@ -99,6 +111,12 @@ const PaymentHistory = () => {
                 <td>{new Date(payment.createdAt).toLocaleString()}</td>
                 <td>{payment.amount}</td>
                 <td>{payment.remark}</td>
+                <td>
+                  <button className="btn-primary" type="button" onClick={() => openReceipt(payment._id)}>
+                    <i className="fa-solid fa-file-invoice"></i>
+                    Receipt
+                  </button>
+                </td>
               </MotionTr>
             ))}
           </tbody>

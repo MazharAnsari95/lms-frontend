@@ -1,12 +1,67 @@
-*{
-  font-family: "Montserrat", sans-serif;
-  box-sizing: border-box;
-   border: none;
-    outline: none;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
-body{
-  margin: 0;
-  -webkit-font-smoothing:antialiased;
-  -moz-osk-font-smoothing:grayscale;
-  color: #33394c;
+
+@layer base {
+  :root {
+    --bg: 222 47% 11%;
+    --panel: 0 0% 100%;
+    --muted: 215 16% 47%;
+    --text: 222 47% 11%;
+    --brand: 255 85% 60%;
+    --brand2: 355 88% 64%;
+  }
 }
+
+@layer components {
+  .app-shell {
+    @apply min-h-screen bg-slate-950 text-slate-100;
+    background:
+      radial-gradient(1200px 500px at 10% 10%, rgba(124, 58, 237, 0.25), transparent 55%),
+      radial-gradient(900px 420px at 90% 20%, rgba(244, 63, 94, 0.18), transparent 55%),
+      radial-gradient(900px 420px at 70% 90%, rgba(34, 211, 238, 0.14), transparent 55%),
+      linear-gradient(180deg, #020617 0%, #030712 100%);
+  }
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.35)];
+  }
+  .card-solid {
+    @apply rounded-2xl border border-black/5 bg-white shadow-[0_16px_50px_rgba(2,6,23,0.14)];
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-semibold text-white
+      bg-gradient-to-br from-violet-600 to-indigo-500 shadow-[0_16px_36px_rgba(124,58,237,0.28)]
+      transition hover:brightness-110 active:translate-y-[1px];
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-semibold text-white
+      bg-gradient-to-br from-rose-500 to-pink-500 shadow-[0_16px_36px_rgba(244,63,94,0.22)]
+      transition hover:brightness-110 active:translate-y-[1px];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-semibold text-white/90
+      border border-white/15 bg-white/10 backdrop-blur transition hover:bg-white/15 active:translate-y-[1px];
+  }
+  .input {
+    @apply w-full rounded-xl border border-black/10 bg-white px-3 py-2 text-slate-900 outline-none
+      focus:ring-4 focus:ring-violet-500/20;
+  }
+  .page-title {
+    @apply text-xl font-bold text-slate-900;
+  }
+  .subtle {
+    @apply text-sm text-slate-600;
+  }
+}
+

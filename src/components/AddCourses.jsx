@@ -76,7 +76,7 @@ const AddCourses = () => {
     <div>
       <form onSubmit={submitHandler} className='form'>
         <h1>{location.state ? 'Edit Course' : 'Add New Course'}</h1>
-        <input value={courseName} required onChange={e => { setCourseName(e.target.value) }} placeholder='Course Name' type='text' />
+        <input value={courseName} required onChange={e => { setCourseName(e.target.value) }} placeholder='Course Name' type='text'  />
         <input value={description} required onChange={e => { setDescription(e.target.value) }} placeholder='Description' type='text' />
         <input value={price} required onChange={e => { setPrice(e.target.value) }} placeholder='Price' type='number' />
         <input value={startingDate} required onChange={e => { setStartingDate(e.target.value) }} placeholder='Starting Date (DD-MM-YY)' type='text' />

@@ -61,8 +61,8 @@ export default function AssignmentDetail() {
             </div>
           </div>
 
-          <p style={{ color: '#444', marginTop: 10 }}>{assignment.description || 'No description.'}</p>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 10, color: '#555' }}>
+          <p style={{ color: '#e5e7eb', marginTop: 10 }}>{assignment.description || 'No description.'}</p>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 10, color: '#cbd5e1' }}>
             <span>
               <i className="fa-solid fa-book"></i> Course: <b>{assignment.courseId}</b>
             </span>
@@ -77,15 +77,15 @@ export default function AssignmentDetail() {
             )}
           </div>
 
-          <div style={{ marginTop: 14, padding: 12, background: '#f5f7fb', borderRadius: 12, border: '1px solid #eee' }}>
-            <div style={{ fontWeight: 700, marginBottom: 6 }}>Student submit link (demo)</div>
-            <div style={{ wordBreak: 'break-all', fontSize: 13 }}>{submitLink}</div>
+          <div style={{ marginTop: 14, padding: 12, background: 'rgba(0,0,0,0.35)', borderRadius: 12, border: '1px solid rgba(255,255,255,0.12)' }}>
+            <div style={{ fontWeight: 700, marginBottom: 6, color: '#e5e7eb' }}>Student submit link (demo)</div>
+            <div style={{ wordBreak: 'break-all', fontSize: 13, color: '#cbd5e1' }}>{submitLink}</div>
           </div>
         </div>
       </div>
 
       <div style={{ marginTop: 16 }}>
-        <h2 style={{ margin: '10px 0' }}>Submissions ({submissions.length})</h2>
+        <h2 style={{ margin: '10px 0', color: '#e5e7eb' }}>Submissions ({submissions.length})</h2>
         {submissions.length === 0 ? (
           <div className="empty-state">No submissions yet.</div>
         ) : (

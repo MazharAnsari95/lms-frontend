@@ -18,6 +18,9 @@ import Assignments from './components/Assignments';
 import AddAssignment from './components/AddAssignment';
 import AssignmentDetail from './components/AssignmentDetail';
 import SubmitAssignment from './components/SubmitAssignment';
+import Attendance from './components/Attendance';
+import Marksheet from './components/Marksheet';
+import Analytics from './components/Analytics';
 
 
 
@@ -35,6 +38,9 @@ const App = () => {
         { path: 'add-course', Component: AddCourses },
         { path: 'students', Component: Students },
         { path: 'add-student', Component: AddStudent },
+        { path: 'attendance', Component: Attendance },
+        { path: 'marksheet', Component: Marksheet },
+        { path: 'analytics', Component: Analytics },
         { path: 'assignments', Component: Assignments },
         { path: 'add-assignment', Component: AddAssignment },
         { path: 'assignment-detail/:id', Component: AssignmentDetail },

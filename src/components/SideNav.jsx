@@ -16,10 +16,13 @@ const SideNav = ({ navOpen, onClose }) => {
             </div>
             <div className='menu-container'>
                 <Link onClick={onClose} to='/dashboard/home' className={location.pathname === '/dashboard/home' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-house"></i> Home</Link>
+                <Link onClick={onClose} to='/dashboard/analytics' className={location.pathname === '/dashboard/analytics' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-chart-line"></i> Analytics</Link>
                 <Link onClick={onClose} to='/dashboard/courses' className={location.pathname === '/dashboard/courses' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-book"></i> All Course</Link>
                 <Link onClick={onClose} to='/dashboard/add-course' className={location.pathname === '/dashboard/add-course' ? 'menu-active-link' : 'menu-link'}><i className="fa-sharp fa-solid fa-plus"></i> Add Courses</Link>
                 <Link onClick={onClose} to='/dashboard/students' className={location.pathname === '/dashboard/students' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-user-group"></i> All Students</Link>
                 <Link onClick={onClose} to='/dashboard/add-student' className={location.pathname === '/dashboard/add-student' ? 'menu-active-link' : 'menu-link'}><i className="fa-sharp fa-solid fa-plus"></i> Add Students</Link>
+                <Link onClick={onClose} to='/dashboard/attendance' className={location.pathname === '/dashboard/attendance' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-calendar-check"></i> Attendance</Link>
+                <Link onClick={onClose} to='/dashboard/marksheet' className={location.pathname === '/dashboard/marksheet' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-file-lines"></i> Marksheet</Link>
                 <Link onClick={onClose} to='/dashboard/assignments' className={location.pathname === '/dashboard/assignments' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-clipboard-list"></i> Assignments</Link>
                 <Link onClick={onClose} to='/dashboard/collect-fee' className={location.pathname === '/dashboard/collect-fee' ? 'menu-active-link' : 'menu-link'}><i className="fa-solid fa-money-bill"></i> Collect Fee</Link>
                 <Link onClick={onClose} to='/dashboard/payment-history' className={location.pathname === '/dashboard/payment-history' ? 'menu-active-link' : 'menu-link'}> <i className="fa-solid fa-list"></i> Payment History</Link>

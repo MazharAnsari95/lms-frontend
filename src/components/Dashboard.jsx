@@ -16,6 +16,7 @@ const Dashboard = () => {
 
   }
   return (
+    <div className='app-shell'>
     <div className='dashboard-main-container'>
       {navOpen && <div className="nav-overlay" onClick={() => setNavOpen(false)} />}
       <div className='dashboard-container'>
@@ -49,6 +50,7 @@ const Dashboard = () => {
         </div>
 
       </div>
+    </div>
     </div>
   )
 }

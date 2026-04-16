@@ -30,7 +30,7 @@ const Login = () => {
         localStorage.setItem('imageUrl', res.data.imageUrl);
         localStorage.setItem('imageId', res.data.imageId);
         localStorage.setItem('email', res.data.email);
-        navigate('/dashboard');
+        navigate('/dashboard/home');
         console.log(res.data); // check sab fields
       })
 
