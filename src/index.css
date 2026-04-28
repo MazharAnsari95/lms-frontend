@@ -12,7 +12,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
-
 @layer base {
   :root {
     --bg: 222 47% 11%;
@@ -37,7 +36,7 @@
     @apply rounded-2xl border border-white/10 bg-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.35)];
   }
   .card-solid {
-    @apply rounded-2xl border border-black/5 bg-white shadow-[0_16px_50px_rgba(2,6,23,0.14)];
+    @apply rounded-2xl border border-black/5 bg-black text-white shadow-[0_16px_50px_rgba(2,6,23,0.14)];
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-semibold text-white
@@ -51,17 +50,16 @@
   }
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-semibold text-white/90
-      border border-white/15 bg-white/10 backdrop-blur transition hover:bg-white/15 active:translate-y-[1px];
+      border border-white/15 bg-black/20 backdrop-blur transition hover:bg-white/15 active:translate-y-[1px];
   }
   .input {
-    @apply w-full rounded-xl border border-black/10 bg-white px-3 py-2 text-slate-900 outline-none
+    @apply w-full rounded-xl border border-black/10 bg-black px-3 py-2 text-white outline-none
       focus:ring-4 focus:ring-violet-500/20;
   }
   .page-title {
-    @apply text-xl font-bold text-slate-900;
+    @apply text-xl font-bold text-slate-100;
   }
   .subtle {
-    @apply text-sm text-slate-600;
+    @apply text-sm text-slate-400 text-slate-400;
   }
 }
-
