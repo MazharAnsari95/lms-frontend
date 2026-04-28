@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
@@ -25,68 +26,93 @@ function getPages(current, total) {
 }
 
 export default function Pagination({ meta, onPageChange }) {
-  if (!meta) return null;
+  if (!meta || meta.totalPages <= 1) return null;
 
   const { page, totalPages } = meta;
   const safeTotalPages = Math.max(totalPages || 1, 1);
   const safePage = clamp(page || 1, 1, safeTotalPages);
   const pageItems = getPages(safePage, safeTotalPages);
 
-  const go = (p) => onPageChange(clamp(p, 1, safeTotalPages));
+  const go = (p) => {
+    if (p !== safePage) onPageChange(clamp(p, 1, safeTotalPages));
+  };
 
   return (
-    <div className="pagination">
-      <button
-        type="button"
-        className="pagination-btn"
-        disabled={safePage <= 1}
-        onClick={() => go(1)}
-      >
-        « First
-      </button>
-      <button
-        type="button"
-        className="pagination-btn"
-        disabled={safePage <= 1}
-        onClick={() => go(safePage - 1)}
-      >
-        ‹ Prev
-      </button>
+    <div className="flex flex-col items-center gap-4 py-6">
+      {/* --- INFO TEXT --- */}
+      <p className="text-xs font-medium text-slate-500 uppercase tracking-widest">
+        Page <span className="text-white">{safePage}</span> of <span className="text-white">{safeTotalPages}</span>
+      </p>
 
-      <div className="pagination-pages">
-        {pageItems.map((p, idx) =>
-          p === '…' ? (
-            <span key={`dots-${idx}`} className="pagination-dots">…</span>
-          ) : (
-            <button
-              key={p}
-              type="button"
-              className={p === safePage ? 'pagination-btn pagination-btn-active' : 'pagination-btn pagination-btn-page'}
-              onClick={() => go(p)}
-            >
-              {p}
-            </button>
-          )
-        )}
+      <div className="flex items-center gap-1 sm:gap-2">
+        {/* --- FIRST / PREV --- */}
+        <div className="flex items-center mr-2">
+          <PaginationIconBtn 
+            onClick={() => go(1)} 
+            disabled={safePage <= 1} 
+            icon={<ChevronsLeft size={18} />} 
+          />
+          <PaginationIconBtn 
+            onClick={() => go(safePage - 1)} 
+            disabled={safePage <= 1} 
+            icon={<ChevronLeft size={18} />} 
+          />
+        </div>
+
+        {/* --- PAGE NUMBERS --- */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          {pageItems.map((p, idx) =>
+            p === '…' ? (
+              <span key={`dots-${idx}`} className="px-2 text-slate-600 font-bold">···</span>
+            ) : (
+              <button
+                key={p}
+                type="button"
+                onClick={() => go(p)}
+                className={`
+                  h-9 w-9 sm:h-10 sm:w-10 rounded-xl text-sm font-bold transition-all duration-200
+                  ${p === safePage 
+                    ? 'bg-violet-600 text-white shadow-lg shadow-violet-900/40 ring-2 ring-violet-400/20' 
+                    : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/5'}
+                `}
+              >
+                {p}
+              </button>
+            )
+          )}
+        </div>
+
+        {/* --- NEXT / LAST --- */}
+        <div className="flex items-center ml-2">
+          <PaginationIconBtn 
+            onClick={() => go(safePage + 1)} 
+            disabled={safePage >= safeTotalPages} 
+            icon={<ChevronRight size={18} />} 
+          />
+          <PaginationIconBtn 
+            onClick={() => go(safeTotalPages)} 
+            disabled={safePage >= safeTotalPages} 
+            icon={<ChevronsRight size={18} />} 
+          />
+        </div>
       </div>
-
-      <button
-        type="button"
-        className="pagination-btn"
-        disabled={safePage >= safeTotalPages}
-        onClick={() => go(safePage + 1)}
-      >
-        Next ›
-      </button>
-      <button
-        type="button"
-        className="pagination-btn"
-        disabled={safePage >= safeTotalPages}
-        onClick={() => go(safeTotalPages)}
-      >
-        Last »
-      </button>
     </div>
   );
 }
 
+// Reusable Icon Button Component
+const PaginationIconBtn = ({ onClick, disabled, icon }) => (
+  <button
+    type="button"
+    disabled={disabled}
+    onClick={onClick}
+    className={`
+      p-2 sm:p-2.5 rounded-xl transition-all duration-200
+      ${disabled 
+        ? 'text-slate-700 cursor-not-allowed opacity-50' 
+        : 'text-slate-400 hover:bg-violet-600/10 hover:text-violet-400 active:scale-90'}
+    `}
+  >
+    {icon}
+  </button>
+);

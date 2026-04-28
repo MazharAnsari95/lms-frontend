@@ -10,8 +10,7 @@ const SideNav = ({ navOpen, onClose }) => {
             <div className='brand-container'>
                 <img className='profile-logo' src={logo} alt="brand-logo" />
                 <div>
-                    <h2 className='brand-name'>AIMT Management App</h2>
-                    <p className='brand-slogon'>Manage Your App in easy way</p>
+              <p className='brand-slogan'>Manage Your Institute</p>
                 </div>
             </div>
             <div className='menu-container'>
