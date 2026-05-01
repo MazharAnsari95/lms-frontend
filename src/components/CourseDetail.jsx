@@ -64,7 +64,7 @@ const CourseDetail = () => {
           
           {/* --- LEFT: COURSE HERO CARD --- */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 backdrop-blur-sm">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-black/50 backdrop-blur-sm">
               <div className="relative h-64 w-full overflow-hidden sm:h-80">
                 <img
                   className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"

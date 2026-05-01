@@ -89,7 +89,7 @@ const StudentDetail = () => {
       <div className="grid lg:grid-cols-3 gap-8">
         
         {/* Left: Main Identity */}
-        <div className="lg:col-span-2 rounded-[2.5rem] bg-slate-900/40 border border-white/10 p-8 flex flex-col md:flex-row gap-8 items-center md:items-start backdrop-blur-md">
+        <div className="lg:col-span-2 rounded-[2.5rem] bg-black/40 border border-white/10 p-8 flex flex-col md:flex-row gap-8 items-center md:items-start backdrop-blur-md">
           <div className="relative">
             <img 
               alt="student pic" 

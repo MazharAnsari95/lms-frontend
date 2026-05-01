@@ -99,7 +99,7 @@ const AddCourses = () => {
                   value={courseName} 
                   required 
                   onChange={e => setCourseName(e.target.value)} 
-                  className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
                   placeholder="e.g. Advanced React Architecture"
                 />
               </div>
@@ -111,7 +111,7 @@ const AddCourses = () => {
                   required 
                   rows={5}
                   onChange={e => setDescription(e.target.value)} 
-                  className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all resize-none"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all resize-none"
                   placeholder="What will students learn in this course?"
                 />
               </div>
@@ -134,7 +134,7 @@ const AddCourses = () => {
                     value={price} 
                     required 
                     onChange={e => setPrice(e.target.value)} 
-                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
+                    className="w-full bg-black/50 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -147,7 +147,7 @@ const AddCourses = () => {
                     value={startingDate} 
                     required 
                     onChange={e => setStartingDate(e.target.value)} 
-                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
+                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -157,7 +157,7 @@ const AddCourses = () => {
                     value={endDate} 
                     required 
                     onChange={e => setEndDate(e.target.value)} 
-                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
+                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -173,7 +173,7 @@ const AddCourses = () => {
               <span className="text-sm font-semibold uppercase tracking-wider">Course Media</span>
             </div>
 
-            <div className="relative aspect-video rounded-2xl border-2 border-dashed border-white/10 bg-slate-900/50 overflow-hidden flex flex-col items-center justify-center group">
+            <div className="relative aspect-video rounded-2xl border-2 border-dashed border-white/10 bg-black/50 overflow-hidden flex flex-col items-center justify-center group">
               {imageUrl ? (
                 <>
                   <img className="h-full w-full object-cover" src={imageUrl} alt="Preview" />

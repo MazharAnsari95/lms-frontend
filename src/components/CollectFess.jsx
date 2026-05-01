@@ -78,7 +78,7 @@ const CollectFees = () => {
         
         {/* --- FORM SECTION (Left) --- */}
         <div className="lg:col-span-7">
-          <form onSubmit={submitHandler} className="bg-slate-900/40 border border-white/10 rounded-[2.5rem] p-8 lg:p-10 backdrop-blur-xl shadow-2xl space-y-6">
+          <form onSubmit={submitHandler} className="bg-black/40 border border-white/10 rounded-[2.5rem] p-8 lg:p-10 backdrop-blur-xl shadow-2xl space-y-6">
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">

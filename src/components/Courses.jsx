@@ -55,7 +55,7 @@ const Courses = () => {
         <div className="relative flex-1 max-w-lg">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
           <input
-            className="w-full h-12 pl-12 pr-4 rounded-2xl bg-slate-900 border border-white/10 text-white placeholder:text-slate-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all outline-none"
+            className="w-full h-12 pl-12 pr-4 rounded-2xl bg-black border border-white/10 text-white placeholder:text-slate-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all outline-none"
             value={q}
             onChange={(e) => { setQ(e.target.value); setPage(1); }}
             placeholder="Search by course name, mentor, or technology..."
@@ -70,7 +70,7 @@ const Courses = () => {
               value={limit}
               onChange={(e) => { setLimit(parseInt(e.target.value, 10)); setPage(1); }}
             >
-              {[8, 12, 16, 24].map(val => <option key={val} value={val} className="bg-slate-900">{val} per page</option>)}
+              {[8, 12, 16, 24].map(val => <option key={val} value={val} className="bg-black">{val} per page</option>)}
             </select>
           </div>
         </div>
@@ -103,7 +103,7 @@ const Courses = () => {
                 variants={cardVars}
                 layout
                 onClick={() => navigate('/dashboard/course-detail/' + course._id)}
-                className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/40 backdrop-blur-sm hover:border-violet-500/50 hover:bg-slate-900/60 transition-all duration-300 cursor-pointer"
+                className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-black/40 backdrop-blur-sm hover:border-violet-500/50 hover:bg-black/60 transition-all duration-300 cursor-pointer"
               >
                 {/* Thumbnail Container */}
                 <div className="relative aspect-video overflow-hidden">

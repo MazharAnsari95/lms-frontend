@@ -139,7 +139,7 @@ export default function Analytics() {
               onChange={(e) => setCourseId(e.target.value)}
             >
               {courses.map((c) => (
-                <option key={c._id} value={c._id} className="bg-slate-900">{c.courseName}</option>
+                <option key={c._id} value={c._id} className="bg-black">{c.courseName}</option>
               ))}
             </select>
           </div>

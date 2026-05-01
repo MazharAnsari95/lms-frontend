@@ -49,7 +49,7 @@ export default function Assignments() {
     <div className="min-h-screen p-4 lg:p-8 space-y-8 max-w-7xl mx-auto">
       
       {/* --- HEADER SECTION --- */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-slate-900/40 p-8 rounded-[2.5rem] border border-white/10 backdrop-blur-md">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-black/40 p-8 rounded-[2.5rem] border border-white/10 backdrop-blur-md">
         <div>
           <h1 className="text-3xl font-bold text-white flex items-center gap-3">
             <div className="p-3 bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-900/20">
@@ -74,7 +74,7 @@ export default function Assignments() {
         <div className="relative group flex-1 w-full">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-indigo-400 transition-colors" size={20} />
           <input
-            className="w-full h-14 pl-12 pr-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:bg-slate-900 focus:border-indigo-500/50 outline-none transition-all"
+            className="w-full h-14 pl-12 pr-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:bg-black focus:border-indigo-500/50 outline-none transition-all"
             value={q}
             onChange={(e) => { setQ(e.target.value); setPage(1); }}
             placeholder="Filter by title or topic description..."
@@ -113,7 +113,7 @@ export default function Assignments() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ y: -5 }}
-                className="group bg-slate-900/40 border border-white/10 rounded-[2rem] p-6 hover:border-indigo-500/50 transition-all cursor-pointer relative overflow-hidden"
+                className="group bg-black/40 border border-white/10 rounded-[2rem] p-6 hover:border-indigo-500/50 transition-all cursor-pointer relative overflow-hidden"
                 onClick={() => navigate('/dashboard/assignment-detail/' + a._id)}
               >
                 {/* Due Date Badge */}
