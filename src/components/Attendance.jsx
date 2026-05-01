@@ -86,7 +86,7 @@ export default function Attendance() {
     <div className="min-h-screen p-4 lg:p-8 space-y-6">
       
       {/* --- TOP CONTROL PANEL --- */}
-      <div className="bg-slate-900/40 border border-white/10 rounded-[2.5rem] p-6 lg:p-8 backdrop-blur-md">
+      <div className="bg-black/40 border border-white/10 rounded-[2.5rem] p-6 lg:p-8 backdrop-blur-md">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div>
             <h1 className="text-2xl font-bold text-white flex items-center gap-3">
@@ -126,7 +126,7 @@ export default function Attendance() {
       </div>
 
       {/* --- ATTENDANCE LIST --- */}
-      <div className="bg-slate-900/20 border border-white/10 rounded-[2rem] overflow-hidden">
+      <div className="bg-black/20 border border-white/10 rounded-[2rem] overflow-hidden">
         <div className="bg-white/5 px-6 py-4 flex items-center justify-between border-b border-white/5">
           <div className="flex items-center gap-2">
             <Users size={18} className="text-slate-400" />

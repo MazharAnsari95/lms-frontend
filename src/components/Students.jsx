@@ -50,7 +50,7 @@ const Students = () => {
     <div className="min-h-screen p-4 lg:p-8 space-y-6">
       
       {/* --- HEADER & CONTROLS --- */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-slate-900/40 p-6 rounded-[2rem] border border-white/10 backdrop-blur-md">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 p-6 rounded-[2rem] border border-white/10 backdrop-blur-md">
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-3">
             <div className="p-2 bg-violet-600 rounded-lg"><Users size={24} /></div>
@@ -92,7 +92,7 @@ const Students = () => {
       <div className="relative group max-w-2xl">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-violet-500 transition-colors" size={20} />
         <input
-          className="w-full h-14 pl-12 pr-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:bg-slate-900 focus:border-violet-500/50 outline-none transition-all shadow-inner"
+          className="w-full h-14 pl-12 pr-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:bg-black focus:border-violet-500/50 outline-none transition-all shadow-inner"
           value={q}
           onChange={(e) => { setQ(e.target.value); setPage(1); }}
           placeholder="Search students by name, email, or mobile..."
@@ -116,7 +116,7 @@ const Students = () => {
             {viewMode === 'table' ? (
               <motion.div 
                 key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                className="overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/20"
+                className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/20"
               >
                 <table className="w-full text-left">
                   <thead className="bg-white/5 text-[10px] font-bold uppercase tracking-widest text-slate-400">
@@ -172,7 +172,7 @@ const Students = () => {
                     whileHover={{ y: -5 }}
                     key={student._id}
                     onClick={() => navigate('/dashboard/student-detail/' + student._id)}
-                    className="group bg-slate-900/40 border border-white/10 rounded-[2.5rem] p-6 hover:border-violet-500/50 transition-all cursor-pointer relative overflow-hidden"
+                    className="group bg-black/40 border border-white/10 rounded-[2.5rem] p-6 hover:border-violet-500/50 transition-all cursor-pointer relative overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                       <ExternalLink size={16} className="text-violet-400" />

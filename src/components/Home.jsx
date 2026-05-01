@@ -74,7 +74,7 @@ const Home = () => {
   return (
     <div className="min-h-screen space-y-8 p-4 pb-12 lg:p-8">
       {/* --- Header Section --- */}
-      <header className="relative overflow-hidden rounded-3xl bg-slate-900 shadow-2xl ring-1 ring-white/10">
+      <header className="relative overflow-hidden rounded-3xl bg-black shadow-2xl ring-1 ring-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-transparent to-transparent"></div>
         <div className="relative z-10 grid items-center gap-8 px-8 py-10 lg:grid-cols-2">
           <div>
@@ -122,7 +122,7 @@ const Home = () => {
           <button
             key={card.title}
             onClick={card.action}
-            className="group relative overflow-hidden rounded-2xl bg-slate-900/50 p-6 text-left ring-1 ring-white/10 transition-all hover:-translate-y-1 hover:bg-slate-800 hover:ring-indigo-500/50"
+            className="group relative overflow-hidden rounded-2xl bg-black/50 p-6 text-left ring-1 ring-white/10 transition-all hover:-translate-y-1 hover:bg-slate-800 hover:ring-indigo-500/50"
           >
             <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${card.bg} ${card.color} mb-4 text-xl shadow-inner`}>
               <i className={`fa-solid ${card.icon}`}></i>
@@ -139,7 +139,7 @@ const Home = () => {
       {/* --- Main Content Tables --- */}
       <div className="grid gap-8 xl:grid-cols-2">
         {/* Recent Students */}
-        <section className="rounded-3xl bg-slate-900/50 ring-1 ring-white/10 backdrop-blur-sm">
+        <section className="rounded-3xl bg-black/50 ring-1 ring-white/10 backdrop-blur-sm">
           <div className="flex items-center justify-between border-b border-white/5 p-6">
             <div>
               <h2 className="text-xl font-bold text-white">Latest Enrollments</h2>
@@ -182,7 +182,7 @@ const Home = () => {
         </section>
 
         {/* Recent Fee Collection */}
-        <section className="rounded-3xl bg-slate-900/50 ring-1 ring-white/10 backdrop-blur-sm">
+        <section className="rounded-3xl bg-black/50 ring-1 ring-white/10 backdrop-blur-sm">
           <div className="flex items-center justify-between border-b border-white/5 p-6">
             <div>
               <h2 className="text-xl font-bold text-white">Revenue Stream</h2>

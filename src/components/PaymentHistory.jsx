@@ -62,7 +62,7 @@ const PaymentHistory = () => {
     <div className="min-h-screen p-4 lg:p-8 space-y-6 max-w-7xl mx-auto">
       
       {/* --- HEADER & STATS --- */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-slate-900/40 p-6 rounded-[2.5rem] border border-white/10 backdrop-blur-md">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 p-6 rounded-[2.5rem] border border-white/10 backdrop-blur-md">
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-3">
             <div className="p-2 bg-emerald-500 rounded-xl shadow-lg shadow-emerald-900/20">
@@ -92,7 +92,7 @@ const PaymentHistory = () => {
       <div className="relative group max-w-xl">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-emerald-500 transition-colors" size={20} />
         <input
-          className="w-full h-14 pl-12 pr-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:bg-slate-900 focus:border-emerald-500/50 outline-none transition-all"
+          className="w-full h-14 pl-12 pr-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:bg-black focus:border-emerald-500/50 outline-none transition-all"
           value={q}
           onChange={(e) => { setQ(e.target.value); setPage(1); }}
           placeholder="Search by student name, phone or remark..."
@@ -100,7 +100,7 @@ const PaymentHistory = () => {
       </div>
 
       {/* --- TABLE AREA --- */}
-      <div className="bg-slate-900/20 border border-white/10 rounded-[2rem] overflow-hidden backdrop-blur-sm">
+      <div className="bg-black/20 border border-white/10 rounded-[2rem] overflow-hidden backdrop-blur-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>

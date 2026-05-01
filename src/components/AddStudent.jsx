@@ -120,7 +120,7 @@ const AddStudents = () => {
               disabled={!!editingStudent}
               value={courseId} 
               onChange={(e) => setCourseId(e.target.value)}
-              className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 transition-all outline-none disabled:opacity-50"
+              className="w-full bg-black border border-white/10 rounded-xl px-4 py-3 text-white focus:border-violet-500 transition-all outline-none disabled:opacity-50"
             >
               <option value="">Select a Course</option>
               {courseList.map((course) => (
@@ -145,7 +145,7 @@ const AddStudents = () => {
                   <UserCircle className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600" size={18} />
                   <input 
                     value={fullName} required onChange={(e) => setFullName(e.target.value)} 
-                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none"
+                    className="w-full bg-black/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none"
                     placeholder="Enter student's full name"
                   />
                 </div>
@@ -157,7 +157,7 @@ const AddStudents = () => {
                   <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600" size={18} />
                   <input 
                     value={phone} required onChange={(e) => setPhone(e.target.value)} 
-                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none"
+                    className="w-full bg-black/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -169,7 +169,7 @@ const AddStudents = () => {
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600" size={18} />
                   <input 
                     type="email" value={email} required onChange={(e) => setEmail(e.target.value)} 
-                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none"
+                    className="w-full bg-black/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none"
                     placeholder="student@example.com"
                   />
                 </div>
@@ -182,7 +182,7 @@ const AddStudents = () => {
                   <textarea 
                     value={address} required onChange={(e) => setAddress(e.target.value)} 
                     rows={3}
-                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none resize-none"
+                    className="w-full bg-black/50 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:border-violet-500 transition-all outline-none resize-none"
                     placeholder="Street name, City, State, Zip"
                   />
                 </div>

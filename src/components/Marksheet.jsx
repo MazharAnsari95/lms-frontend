@@ -120,7 +120,7 @@ export default function Marksheet() {
         
         {/* --- LEFT: GENERATOR FORM --- */}
         <div className="xl:col-span-8 space-y-6">
-          <form onSubmit={submit} className="bg-slate-900/40 border border-white/10 rounded-[2.5rem] p-6 lg:p-10 backdrop-blur-md shadow-2xl space-y-8">
+          <form onSubmit={submit} className="bg-black/40 border border-white/10 rounded-[2.5rem] p-6 lg:p-10 backdrop-blur-md shadow-2xl space-y-8">
             
             {/* Metadata Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8 border-b border-white/5">
@@ -231,7 +231,7 @@ export default function Marksheet() {
           </div>
 
           {/* History List */}
-          <div className="bg-slate-900/40 border border-white/10 rounded-[2.5rem] p-6 backdrop-blur-md overflow-hidden">
+          <div className="bg-black/40 border border-white/10 rounded-[2.5rem] p-6 backdrop-blur-md overflow-hidden">
             <h3 className="text-white font-bold text-sm mb-4 px-2 uppercase tracking-widest">Recent Certificates</h3>
             <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
               {savedMarksheets.length === 0 ? (
